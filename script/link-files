@@ -16,14 +16,15 @@ link-files - Create symlinks in one directory for files in another
 B<link-files> <options>
 
  Options:
-  -n, --dry-run         Don't actually do anything
-  -s DIR, --source=DIR  The source directory
-  -d DIR, --dest=DIR    The destination directory
-  -r, --recursive       Recurse into subdirectories (see below)
-  -i RX, --ignore=RX    A regex matching files to ignore (see below)
-  -f, --force           Overwrite existing files/dirs
-  -h, --help            Display this help message
-  -v, --version         Display version information
+  -n, --dry-run             Don't actually do anything
+  -s DIR, --source=DIR      The source directory
+  -d DIR, --dest=DIR        The destination directory
+  -r, --recursive           Recurse into subdirectories (see below)
+  -i RX, --ignore=RX        A regex matching files to ignore (see below)
+  -a RX, --add-ignore=RX    Like -i but doesn't replace the default
+  -f, --force               Overwrite existing files/dirs
+  -h, --help                Display this help message
+  -v, --version             Display version information
 
 By default, B<link-files> will create symlinks in the destination directory for
 all top-level files, directories or symlinks found in the source directory.

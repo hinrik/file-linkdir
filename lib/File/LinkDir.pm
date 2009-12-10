@@ -12,18 +12,19 @@ use Pod::Find qw<pod_where>;
 use Pod::Usage;
 
 our $VERSION = '0.01';
-my ($dry_run, $source, $dest, $recursive, $force);
+my ($dry_run, $source, $dest, $recursive, $force, @add_ignore);
 my $ignore = '^\.(?:git|svn)(?:/.*)?$';
 
 sub run {
     GetOptions(
-        'n|dry-run'   => \$dry_run,
-        's|source=s'  => \$source,
-        'd|dest=s'    => \$dest,
-        'r|recursive' => \$recursive,
-        'i|ignore=s'  => \$ignore,
-        'f|force'     => \$force,
-        'v|version'   => sub { print "link-files version $VERSION\n"; exit },
+        'n|dry-run'      => \$dry_run,
+        's|source=s'     => \$source,
+        'd|dest=s'       => \$dest,
+        'r|recursive'    => \$recursive,
+        'i|ignore=s'     => \$ignore,
+        'a|add-ignore=s' => \@add_ignore,
+        'f|force'        => \$force,
+        'v|version'      => sub { print "link-files version $VERSION\n"; exit },
     ) or pod2usage(-input => pod_where({-inc => 1}, 'link-files'));
 
     $source = abs_path($source) if defined $source;
@@ -33,6 +34,10 @@ sub run {
 
     eval { $ignore = qr/$ignore/ };
     die "Invalid regex passed to --ignore: $@\n" if $@;
+    for my $rx (@add_ignore) {
+        eval { $rx = qr/$rx/ };
+        die "Invalid regex passed to --add-ignore: $@\n" if $@;
+    }
 
     $recursive
         ? find({wanted => \&recursive, no_chdir => 1}, $source)
@@ -43,7 +48,9 @@ sub run {
 sub recursive {
     my $file = $File::Find::name;
     $file =~ s{^$source/}{};
+
     return if $file =~ $ignore;
+    return if grep { $file =~ /$_/ } @add_ignore;
     return if !-f $file && !-l $file;
 
     if (-l $file && -l "$dest/$file") {
@@ -113,7 +120,8 @@ sub normal {
 
     while (defined (my $file = readdir $dir_handle)) {
         next if $file =~ /^\.{1,2}$/;
-        next if $file =~ /^\.(?:git|svn)$/;
+        next if $file =~ $ignore;
+        next if grep { $file =~ /$_/ } @add_ignore;
 
         if (-l "$dest/$file" && stat "$dest/$file") {
             next if (stat "$dest/$file")[1] == (stat $file)[1];
