@@ -13,7 +13,7 @@ use Pod::Usage;
 
 our $VERSION = '0.02';
 my ($dry_run, $source, $dest, $recursive, $force, @add_ignore);
-my $ignore = '^\.(?:git|svn)(?:/.*)?$';
+my $ignore = '(?:.*/)?.(?:git|svn)(?:/.*)?$';
 
 sub run {
     GetOptions(

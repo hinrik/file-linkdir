@@ -1,3 +1,6 @@
+0.03
+    - Fix a bug with ignoring .git/.sub in subdirectories
+
 0.02 Thu Dec 10 13:03:16 UTC 2009
     - Allow specifying additional ignore patterns
 

@@ -47,9 +47,7 @@ In both cases, symlinks from the source directory will be copied as-is. This
 makes sense because the symlinks might be relative.
 
 If C<--ignore> is not specified, it defaults to ignoring F<.git> and F<.svn>
-directories and their contents. When you supply your own regex, note that it
-will be matched only against the filename after any directories have been
-stripped from the string.
+directories and their contents.
 
 =head1 AUTHOR
 
