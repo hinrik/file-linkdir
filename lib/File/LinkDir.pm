@@ -5,7 +5,7 @@ use warnings;
 
 use Cwd qw<abs_path getcwd>;
 use File::Find;
-use File::Path qw<remove_tree>;
+use File::Path qw<remove_tree make_path>;
 use File::Spec::Functions qw<catpath splitpath>;
 use Getopt::Long qw<:config auto_help bundling>;
 use Pod::Find qw<pod_where>;
