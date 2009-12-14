@@ -11,6 +11,7 @@ version_from   ('lib/File//LinkDir.pm');
 install_script ('script/link-files');
 license        ('perl');
 githubmeta     ();
+requires       ('File::Path'   => '0');
 test_requires  ('Test::More'   => '0');
 test_requires  ('Test::Script' => '0');
 tests_recursive();
