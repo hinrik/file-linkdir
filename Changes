@@ -1,3 +1,7 @@
+0.05
+    - Depend on File::Path 2.07, and make sure we import make_path before
+      we use it
+
 0.04 Mon Dec 14 10:25:17 GMT 2009
     - Add missing dependency on File::Path
 
