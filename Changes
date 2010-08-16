@@ -1,3 +1,6 @@
+{{$NEXT}}
+    - Use Dist::Zilla
+
 0.05 Sat Dec 19 22:32:59 GMT 2009
     - Depend on File::Path 2.07, and make sure we import make_path before
       we use it

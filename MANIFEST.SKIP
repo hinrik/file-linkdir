@@ -1,0 +1,6 @@
+^Makefile$
+\.old$
+^File-LinkDir-
+^blib/
+^pm_to_blib$
+^cover_db/
