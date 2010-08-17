@@ -1,0 +1,23 @@
+=encoding UTF-8
+
+=head1 NAME
+
+File::LinkDir - Create symlinks in one directory for files in another
+
+=head1 SYNOPSIS
+
+ use File::LinkDir;
+ File::LinkDir->run();
+
+=head1 AUTHOR
+
+Hinrik E<Ouml>rn SigurE<eth>sson, hinrik.sig@gmail.com
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2009 Hinrik E<Ouml>rn SigurE<eth>sson
+
+This program is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
