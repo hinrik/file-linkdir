@@ -1,7 +1,7 @@
 package File::LinkDir;
 
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use Cwd qw<abs_path getcwd>;
 use File::Find;
