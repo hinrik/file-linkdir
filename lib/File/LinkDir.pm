@@ -12,7 +12,7 @@ use Pod::Find qw<pod_where>;
 use Pod::Usage;
 
 my ($dry_run, $source, $dest, $recursive, $force, @add_ignore);
-my $ignore = '(?:.*/)?.(?:git|svn)(?:/.*)?$';
+my $ignore = '(?:.*/)?.(?:git.*|svn)(?:/.*)?$';
 
 sub run {
     GetOptions(
