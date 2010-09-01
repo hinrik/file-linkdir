@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.07  Wed Sep 1 04:34:16 GMT 2010
     - Ignore /^.git.*/ to catch .gitignore
     - Depend on the latest File::Path
 
